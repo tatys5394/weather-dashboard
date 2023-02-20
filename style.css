@@ -1,0 +1,70 @@
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#header {
+    background-color: blueviolet;
+    flex-grow: 1;
+}
+
+#main-box {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 10;
+}
+
+#sidebar {
+    display: flex;
+    flex-direction: column;
+
+    background-color: yellowgreen;
+    flex-grow: 1;
+}
+
+#sidebar-title {
+    background-color: blue;
+    flex-grow: 1;
+}
+
+#search-box {
+    display: flex;
+    flex-direction: column;
+    background-color: aqua;
+    flex-grow: 1;
+}
+
+#input-box {
+    flex-grow: 1;
+}
+
+#search-button-box {
+    flex-grow: 1;
+}
+
+#saved-input {
+    background-color: green;
+    flex-grow: 8;
+}
+
+#main-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 3;
+    height: 100%;
+}
+
+#city-day-forecast {
+    background-color: red;
+    flex-grow: 1;
+}
+
+#five-day-forecast {
+    background-color: goldenrod;
+    flex-grow: 1;
+}

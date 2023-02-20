@@ -5,28 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style src="./style.css"></style>
+    <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-    <!-- WEATHER DASHBOARD TITLE  -->
+    <div id="header">
+        <h1>Weather Dashboard</h1>
+    </div>
+    <div id="main-box">
+        <div id="sidebar">
+            <div id="sidebar-title">
+                <h2>Search for a City:</h2>
+            </div>
+            <div id="search-box">
+                <div id="input-box">
+                    <input id="user-input" placeholder="New Jersey" type="text"></input>
+                </div>
+                <div id="search-button-box">
+                    <button id="search-button">Search</button>
+                </div>
+            </div>
+            <div id="saved-input">
+                saved
+            </div>
+        </div>
+        <div id="main-content">
+            <div id="city-day-forecast">
+                <h2 id="city-name"></h2>
+                <p id="weather-info"></p>
+            </div>
+            <div id="five-day-forecast">
+                week
+            </div>
+        </div>
 
-    Hello World!
-
-    <!-- SEARCH FOR A CITY INPUT BOX -->
-
-    <!-- SEARCH BUTTON -->
-
-
-
-    <!-- SAVED USER CITY SEARCHES -->
-
-
-    <!-- DISPLAY OF CITY, DATE,TEMP, WIND, HUMIDITY -->
-
-
-
-    <!-- 5 DAY FORECAST DISPLAY AREA -->
-
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./script.js"></script>

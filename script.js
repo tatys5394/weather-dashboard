@@ -7,13 +7,22 @@ const WEATHER_QUERY_URL = "https://api.openweathermap.org/data/2.5/forecast";
 // create an array of cities? or how do we get coordinates 
 // create localstorage to store user input. Specify state and country variables in your API call, as multiple countries or states might have cities with the same name. For the purposes of this guide, you can use the city variable that you just created.
 
+// Map elements section
+var searchButton = $("#search-button");
+searchButton.on("click", search);
+
+var cityName = $("#city-name");
+var weatherInfo = $("#weather-info");
+
+var userInput = $("#user-input");
 
 $(document).ready(function () {
-    // TO DO: remove this because it's gonna be mapped to a button 
-    search("Cali");
+
 });
 
-async function search(city) {
+async function search() {
+    var city = userInput.val();
+
     var cityData = await getCityInfo(city);
     var cityLat = cityData[0].lat;
     var cityLon = cityData[0].lon;
@@ -23,6 +32,11 @@ async function search(city) {
     var temp = cityWeatherData.list[0].main.temp
     var humidity = cityWeatherData.list[0].main.humidity
     var windSpeed = cityWeatherData.list[0].wind.speed
+
+    cityName.text(city);
+    var weatherText = "Temp: " + temp + ". Humidity: " + humidity + ". Wind speed: " + windSpeed;
+
+    weatherInfo.text(weatherText);
     
 }
 

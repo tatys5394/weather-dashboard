@@ -14,7 +14,7 @@ searchButton.on("click", search);
 var cityName = $("#city-name");
 
 var userInput = $("#user-input");
-var icon = $("icon");
+var icon = $("#icon");
 var tempEl = $("#Temp");
 var humidityEl = $("#Humidity");
 var windSpeedEl = $("#Wind-speed");
@@ -39,6 +39,11 @@ async function search() {
     var windSpeed = cityWeatherData.list[0].wind.speed
 
     cityName.text(city);
+    
+    var iconId = cityWeatherData.list[0].weather[0].icon
+    var url = ICON_QUERY_URL + iconId + ".png";
+    icon.attr('src', url);
+
     var date = cityWeatherData.list[0].dt_txt.split(" ")[0];
     cityName.append(`  ( ${date} )`);
 
@@ -50,6 +55,11 @@ async function search() {
    humidityEl.text(humidityText);
    windSpeedEl.text(windSpeedText);
    addToHistory(city); 
+
+   userInput.reset();
+
+   var clearInput = document.createElement("user-input");
+        clearInput.textContent = "";
 }
 function addToHistory(city) {
 if(searchHistory.indexOf(city)!== -1){
@@ -69,8 +79,8 @@ for(var i = searchHistory.length-1; i >= 0; i --) {
     btn.setAttribute("data-search", searchHistory[i]);
     btn.textContent = searchHistory[i];
     savedInputEl.append(btn)
-}
-}
+}}
+
 async function getCityInfo(city) {
     // This functions consumes this API https://openweathermap.org/api/geocoding-api
     // This function returns a Json with all the city information
@@ -90,12 +100,12 @@ async function getCityWeatherInfo(lat, lon) {
     return data;
 }
 
-async function getIcon(icon) {
-    var url = ICON_QUERY_URL + icon + ".png" + API_KEY;
+    // for(var i = cityWeatherInfo.length; i >= 6; i++);
+    // return (city, icon, tempText, humidityText, windText,)
 
 //  var response = await fetch(url, {method:"GET"});
 //     var icon = await response.json();
 //     console.log("icon = ", icon);
-//     return icon;
-    
-}
+//     return icon; 
+// }
+

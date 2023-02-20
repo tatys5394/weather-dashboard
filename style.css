@@ -24,19 +24,19 @@ body {
 #sidebar {
     display: flex;
     flex-direction: column;
-    background-color: yellowgreen;
+    /* background-color: yellowgreen; */
     flex-grow: 1;
 }
 
 #sidebar-title {
-    background-color: blue;
+    /* background-color: blue; */
     flex-grow: 1;
 }
 
 #search-box {
     display: flex;
     flex-direction: column;
-    background-color: aqua;
+    /* background-color: aqua; */
     flex-grow: 1;
 }
 
@@ -49,7 +49,7 @@ body {
 }
 
 #saved-input {
-    background-color: green;
+    /* background-color: green; */
     display: flex;
     flex-direction:column;
     flex-grow: 8;
@@ -63,7 +63,7 @@ body {
 }
 
 #city-day-forecast {
-    background-color: red;
+    /* background-color: red; */
     flex-grow: 1;
 }
 
@@ -75,7 +75,6 @@ body {
 
 }#plus-one {
     background-color: brown;
-    
 }
 
 #plus-two {

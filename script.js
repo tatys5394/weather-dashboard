@@ -15,6 +15,9 @@ var cityName = $("#city-name");
 var weatherInfo = $("#weather-info");
 
 var userInput = $("#user-input");
+var tempEl = $("#Temp");
+var humidityEl = $("#Humidity");
+var windSpeedEl = $("#Wind-speed");
 
 $(document).ready(function () {
 
@@ -28,7 +31,7 @@ async function search() {
     var cityLon = cityData[0].lon;
 
     var cityWeatherData = await getCityWeatherInfo(cityLat, cityLon);
-    
+
     var temp = cityWeatherData.list[0].main.temp
     var humidity = cityWeatherData.list[0].main.humidity
     var windSpeed = cityWeatherData.list[0].wind.speed
@@ -36,7 +39,13 @@ async function search() {
     cityName.text(city);
     var weatherText = "Temp: " + temp + ". Humidity: " + humidity + ". Wind speed: " + windSpeed;
 
-    weatherInfo.text(weatherText);
+    var tempText = "Temp: " + temp;
+    var humidityText = "Humidity: " + humidity;
+    var windSpeedText = "Wind speed: " + windSpeed;
+    
+   tempEl.text(tempText);
+   humidityEl.text(humidityText);
+   windSpeedEl.text(windSpeedText);
     
 }
 
@@ -51,7 +60,8 @@ async function getCityInfo(city) {
 }
 
 async function getCityWeatherInfo(lat, lon) {
-    var url = WEATHER_QUERY_URL + "?lat=" + lat + "&lon=" + lon + "&appid=" + API_KEY;
+    var url = WEATHER_QUERY_URL + "?lat=" + lat + "&lon=" + lon +  "&units=imperial" + "&appid=" + API_KEY; 
+
 
     var response = await fetch(url, {method:"GET"});
     var data = await response.json();

@@ -10,6 +10,8 @@ body {
 
 #header {
     background-color: blueviolet;
+    color: whitesmoke;
+    text-align: center;
     flex-grow: 1;
 }
 
@@ -22,7 +24,6 @@ body {
 #sidebar {
     display: flex;
     flex-direction: column;
-
     background-color: yellowgreen;
     flex-grow: 1;
 }
@@ -49,6 +50,8 @@ body {
 
 #saved-input {
     background-color: green;
+    display: flex;
+    flex-direction:column;
     flex-grow: 8;
 }
 
@@ -66,5 +69,27 @@ body {
 
 #five-day-forecast {
     background-color: goldenrod;
+    display: flex;
+    flex-direction: row;
     flex-grow: 1;
+
+}#plus-one {
+    background-color: brown;
+    
+}
+
+#plus-two {
+    background-color: fuchsia;
+}
+
+#plus-three {
+    background-color: rgb(27, 170, 202);
+}
+
+#plus-four {
+    background-color: rgb(155, 113, 15);
+}
+
+#plus-five {
+    background-color: rgb(185, 19, 8);
 }

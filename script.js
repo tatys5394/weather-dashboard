@@ -1,7 +1,7 @@
 const API_KEY = "104a3cf9c97eb36dae06eabd5aa7ae2d";
 const CITY_QUERY_URL = "https://api.openweathermap.org/geo/1.0/direct";
 const WEATHER_QUERY_URL = "https://api.openweathermap.org/data/2.5/forecast";
-
+const ICON_QUERY_URL = "http://openweathermap.org/img/w/";
 
 // create user input box for cities
 // create an array of cities? or how do we get coordinates 
@@ -14,9 +14,12 @@ searchButton.on("click", search);
 var cityName = $("#city-name");
 
 var userInput = $("#user-input");
+var icon = $("icon");
 var tempEl = $("#Temp");
 var humidityEl = $("#Humidity");
 var windSpeedEl = $("#Wind-speed");
+var searchHistory = [];
+var savedInputEl = $("#saved-input");
 
 $(document).ready(function () {
 
@@ -46,9 +49,28 @@ async function search() {
    tempEl.text(tempText);
    humidityEl.text(humidityText);
    windSpeedEl.text(windSpeedText);
-    
+   addToHistory(city); 
+}
+function addToHistory(city) {
+if(searchHistory.indexOf(city)!== -1){
+    return;
+}
+searchHistory.push(city);
+localStorage.setItem("search-history", JSON.stringify(searchHistory));
+displayHistory();
 }
 
+function displayHistory(){
+savedInputEl.innerHTML = "";
+for(var i = searchHistory.length-1; i >= 0; i --) {
+    var btn = document.createElement("button");
+    btn.setAttribute("type", "button");
+    btn.classList.add("history-btn", "btn-history");
+    btn.setAttribute("data-search", searchHistory[i]);
+    btn.textContent = searchHistory[i];
+    savedInputEl.append(btn)
+}
+}
 async function getCityInfo(city) {
     // This functions consumes this API https://openweathermap.org/api/geocoding-api
     // This function returns a Json with all the city information
@@ -62,9 +84,18 @@ async function getCityInfo(city) {
 async function getCityWeatherInfo(lat, lon) {
     var url = WEATHER_QUERY_URL + "?lat=" + lat + "&lon=" + lon +  "&units=imperial" + "&appid=" + API_KEY; 
 
-
     var response = await fetch(url, {method:"GET"});
     var data = await response.json();
     console.log("data = ", data);
     return data;
+}
+
+async function getIcon(icon) {
+    var url = ICON_QUERY_URL + icon + ".png" + API_KEY;
+
+//  var response = await fetch(url, {method:"GET"});
+//     var icon = await response.json();
+//     console.log("icon = ", icon);
+//     return icon;
+    
 }

@@ -12,7 +12,6 @@ var searchButton = $("#search-button");
 searchButton.on("click", search);
 
 var cityName = $("#city-name");
-var weatherInfo = $("#weather-info");
 
 var userInput = $("#user-input");
 var tempEl = $("#Temp");
@@ -37,6 +36,8 @@ async function search() {
     var windSpeed = cityWeatherData.list[0].wind.speed
 
     cityName.text(city);
+    var date = cityWeatherData.list[0].dt_txt.split(" ")[0];
+    cityName.append(`  ( ${date} )`);
 
     var tempText = "Temp: " + temp + " deg F ";
     var humidityText = "Humidity: " + humidity + " % "; 
@@ -64,5 +65,6 @@ async function getCityWeatherInfo(lat, lon) {
 
     var response = await fetch(url, {method:"GET"});
     var data = await response.json();
+    console.log("data = ", data);
     return data;
 }

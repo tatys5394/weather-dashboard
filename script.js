@@ -37,11 +37,10 @@ async function search() {
     var windSpeed = cityWeatherData.list[0].wind.speed
 
     cityName.text(city);
-    var weatherText = "Temp: " + temp + ". Humidity: " + humidity + ". Wind speed: " + windSpeed;
 
-    var tempText = "Temp: " + temp;
-    var humidityText = "Humidity: " + humidity;
-    var windSpeedText = "Wind speed: " + windSpeed;
+    var tempText = "Temp: " + temp + " deg F ";
+    var humidityText = "Humidity: " + humidity + " % "; 
+    var windSpeedText = "Wind speed: " + windSpeed + " mph "; 
     
    tempEl.text(tempText);
    humidityEl.text(humidityText);

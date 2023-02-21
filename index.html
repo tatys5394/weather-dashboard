@@ -8,76 +8,77 @@
     <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
+    <header class="hero">
     <div id="header">
-        <!-- <img id="wicon" src="http://openweathermap.org/img/w/04d.png" alt="Weather icon"> -->
         <h1>Weather Dashboard</h1>
     </div>
-    <div id="main-box">
-        <div id="sidebar">
-            <div id="sidebar-title">
-                <h2>Search for a City:</h2>
-            </div>
-            <div id="search-box">
-                <div id="input-box">
+    </header>
+
+   <main>
+        <div id="main-box">
+            <div id="sidebar">
+                    <div id="sidebar-title">
+                        <h2>Search for a City:</h2>
+                    </div>
+                    <div id="input-box"></div>
                     <input id="user-input" placeholder="New Jersey" type="text"></input>
-                </div>
-                <div id="search-button-box">
                     <button id="search-button">Search</button>
+                    
+                    <div id="saved-input">
+                        <button class="city-btn" id="saved-input-1">-</button>
+                        <button class="city-btn" id="saved-input-2">-</button>
+                        <button class="city-btn" id="saved-input-3">-</button>
+                        <button class="city-btn" id="saved-input-4">-</button>
+                        <button class="city-btn" id="saved-input-5">-</button>
+                    </div>
+            </div>
+             <div id="main-content">
+                <div id="city-day-forecast">
+                    <h2 id="city-name"></h2>
+                    <img id="icon"></img> 
+                    <div id="weather-info"></div>
+                    <div id="Temp"></div>
+                    <div id="Humidity"></div>
+                    <div id="Wind-speed"></div>
                 </div>
-            </div>
-            <div id="saved-input"></div>
-                
+                <div id="five-day-forecast">
+                    <div id="day1">one</div>
+                        <img id="icon1"></img> 
+                        <div id="weather-info1"></div>
+                        <div id="Temp1"></div>
+                        <div id="Humidity1"></div>
+                            <div id="Wind-speed1"></div>
+
+                    <div id="day2">two</div>
+                        <img id="icon2"></img> 
+                        <div id="weather-info2"></div>
+                        <div id="Temp2"></div>
+                        <div id="Humidity2"></div>
+                        <div id="Wind-speed2"></div>
+
+                    <div id="day3">three<div>        
+                        <img id="icon3"></img> 
+                        <div id="weather-info3"></div>
+                        <div id="Temp3"></div>
+                        <div id="Humidity3"></div>
+                        <div id="Wind-speed3"></div>
+
+                    <div id="day4">four</div>
+                        <img id="icon4"></img> 
+                        <div id="weather-info4"></div>
+                        <div id="Temp4"></div>
+                        <div id="Humidity4"></div>
+                        <div id="Wind-speed4"></div>
+
+                    <div id="day5">five</div>
+                        <img id="icon5"></img> 
+                        <div id="weather-info5"></div>
+                        <div id="Temp5"></div>
+                        <div id="Humidity5"></div>
+                        <div id="Wind-speed5"></div>
         </div>
-        <div id="main-content">
-            <div id="city-day-forecast">
-                <h2 id="city-name"></h2>
-                <img id="icon"></img> 
-                <div id="weather-info"></div>
-                <div id="Temp"></div>
-                <div id="Humidity"></div>
-                <div id="Wind-speed"></div>
-            </div>
-            <div id="five-day-forecast">
-                <div id="plus-one">one</div>
-                    <div> id="date" </div>
-                    <img id="icon"></img> 
-                    <div id="weather-info"></div>
-                    <div id="Temp"></div>
-                    <div id="Humidity"></div>
-                    <div id="Wind-speed"></div>
-
-                <div id="plus-two">two</div>
-                    <img id="icon"></img> 
-                    <div id="weather-info"></div>
-                    <div id="Temp"></div>
-                    <div id="Humidity"></div>
-                    <div id="Wind-speed"></div>
-
-                <div id="plus-three">three<div>        
-                    <img id="icon"></img> 
-                    <div id="weather-info"></div>
-                    <div id="Temp"></div>
-                    <div id="Humidity"></div>
-                    <div id="Wind-speed"></div>
-
-                <div id="plus-four">four</div>
-                    <img id="icon"></img> 
-                    <div id="weather-info"></div>
-                    <div id="Temp"></div>
-                    <div id="Humidity"></div>
-                    <div id="Wind-speed"></div>
-
-                <div id="plus-five">five</div>
-                    <img id="icon"></img> 
-                    <div id="weather-info"></div>
-                    <div id="Temp"></div>
-                    <div id="Humidity"></div>
-                    <div id="Wind-speed"></div>
-
-        </div>
-
     </div>
-
+    </main> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./script.js"></script>
 </body>

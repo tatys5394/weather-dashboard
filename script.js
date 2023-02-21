@@ -10,9 +10,7 @@ const ICON_QUERY_URL = "http://openweathermap.org/img/w/";
 // Map elements section
 var searchButton = $("#search-button");
 searchButton.on("click", search);
-
 var cityName = $("#city-name");
-
 var userInput = $("#user-input");
 var icon = $("#icon");
 var tempEl = $("#Temp");
@@ -25,7 +23,8 @@ $(document).ready(function () {
 
 });
 
-async function search() {
+async function search(event) {
+    event.preventDefault();
     var city = userInput.val();
 
     var cityData = await getCityInfo(city);
@@ -56,10 +55,8 @@ async function search() {
    windSpeedEl.text(windSpeedText);
    addToHistory(city); 
 
-   userInput.reset();
+//    userInput.reset();
 
-   var clearInput = document.createElement("user-input");
-        clearInput.textContent = "";
 }
 function addToHistory(city) {
 if(searchHistory.indexOf(city)!== -1){

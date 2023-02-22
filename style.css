@@ -66,22 +66,22 @@ body {
     flex-direction: row;
     flex-grow: 1;
 
-}#plus-one {
+}.date1 {
     background-color: brown;
 }
 
-#plus-two {
+.date2 {
     background-color: fuchsia;
 }
 
-#plus-three {
+.date3 {
     background-color: rgb(27, 170, 202);
 }
 
-#plus-four {
+.date4 {
     background-color: rgb(155, 113, 15);
 }
 
-#plus-five {
+.date5 {
     background-color: rgb(185, 19, 8);
 }

@@ -90,18 +90,45 @@ async function getCityWeatherInfo(lat, lon) {
     return data;
 }
 
-for(var i = 1; i>6; i++) {
-    var dateI = cityWeatherData.list[i].dt
-    var tempI = cityWeatherData.list[i].main.temp
-    var humidityI = cityWeatherData.list[i].main.humidity
-    var windSpeedI = cityWeatherData.list[i].wind.speed
+function displayForecast(cityWeatherData) {
+    console.log("func called");
+    for (let i = 1; i < 6; i++) {
+      console.log("when run");
+      var dateI = cityWeatherData.list[i].dt;
+      var tempI = cityWeatherData.list[i].main.temp;
+      var humidityI = cityWeatherData.list[i].main.humidity;
+      var windSpeedI = cityWeatherData.list[i].wind.speed;
+  
+      $("#date" + i).html(dateI);
+      // $("#icon" + i).html("<img src=" + iconURL + ">");
+      $("#Temp" + i).html(tempI);
+      $("#Wind" + i).html(windSpeedI);
+      $("#Humidity" + i).html(humidityI);
 
-$('#date'+i).html(dateI);
-$('#icon'+i).html("<img src="+iconURL+">");
-$('#Temp'+i).html(tempI);
-$('#Wind'+i).html(windSpeedI);
-$('#Humidity'+i).html(humidityI);
+      var windSpeedText = "Wind speed: " + windSpeed + " mph ";
+        displayForecast(cityWeatherData);
 
-}
+        tempEl.text(tempText);
+        humidityEl.text(humidityText);
+        windSpeedEl.text(windSpeedText);
+        addToHistory(city);
+    }
+    }
+
+
+
+// for(var i = 1; i<6; i++) {
+//     var dateI = cityWeatherData.list[i].dt
+//     var tempI = cityWeatherData.list[i].main.temp
+//     var humidityI = cityWeatherData.list[i].main.humidity
+//     var windSpeedI = cityWeatherData.list[i].wind.speed
+
+// $('#date'+i).html(dateI);
+// $('#icon'+i).html("<img src="+iconURL+">");
+// $('#Temp'+i).html(tempI);
+// $('#Wind'+i).html(windSpeedI);
+// $('#Humidity'+i).html(humidityI);
+
+// }
 
 

@@ -48,6 +48,7 @@ async function search(event) {
    humidityEl.text(humidityText);
    windSpeedEl.text(windSpeedText);
    addToHistory(city); 
+   displayForecast(cityWeatherData);
 }
 
 function addToHistory(city) {
@@ -94,41 +95,23 @@ function displayForecast(cityWeatherData) {
     console.log("func called");
     for (let i = 1; i < 6; i++) {
       console.log("when run");
-      var dateI = cityWeatherData.list[i].dt;
+      var iconID = cityWeatherData.list[0].weather[0].icon;
+        var iconURL = ICON_QUERY_URL + iconID + ".png";
+        icon.attr("src", iconURL);
+        var dateI = cityWeatherData.list[0].dt_txt.split(" ")[0];
+        cityName.append(`  ( ${dateI} )`);
       var tempI = cityWeatherData.list[i].main.temp;
       var humidityI = cityWeatherData.list[i].main.humidity;
       var windSpeedI = cityWeatherData.list[i].wind.speed;
   
+      var tempText = "Temp: " + tempI + " deg F";
+      var humidityText = "Humidity: " + humidityI;
+      var windSpeedText = "Wind speed: " + windSpeedI + " mph ";
+
       $("#date" + i).html(dateI);
-      // $("#icon" + i).html("<img src=" + iconURL + ">");
-      $("#Temp" + i).html(tempI);
-      $("#Wind" + i).html(windSpeedI);
-      $("#Humidity" + i).html(humidityI);
-
-      var windSpeedText = "Wind speed: " + windSpeed + " mph ";
-        displayForecast(cityWeatherData);
-
-        tempEl.text(tempText);
-        humidityEl.text(humidityText);
-        windSpeedEl.text(windSpeedText);
-        addToHistory(city);
+      $("#icon" + i).html("<img src=" + iconURL + ">");
+      $("#Temp" + i).html(tempText);
+      $("#Wind" + i).html(windSpeedText);
+      $("#Humidity" + i).html(humidityText);
     }
     }
-
-
-
-// for(var i = 1; i<6; i++) {
-//     var dateI = cityWeatherData.list[i].dt
-//     var tempI = cityWeatherData.list[i].main.temp
-//     var humidityI = cityWeatherData.list[i].main.humidity
-//     var windSpeedI = cityWeatherData.list[i].wind.speed
-
-// $('#date'+i).html(dateI);
-// $('#icon'+i).html("<img src="+iconURL+">");
-// $('#Temp'+i).html(tempI);
-// $('#Wind'+i).html(windSpeedI);
-// $('#Humidity'+i).html(humidityI);
-
-// }
-
-

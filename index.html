@@ -16,7 +16,8 @@
 
    <main>
         <div id="main-box">
-            <div id="sidebar">
+            <section>
+                <div id="sidebar">
                     <div id="sidebar-title">
                         <h2>Search for a City:</h2>
                     </div>
@@ -31,53 +32,64 @@
                         <button class="city-btn" id="saved-input-4">-</button>
                         <button class="city-btn" id="saved-input-5">-</button>
                     </div>
-            </div>
-             <div id="main-content">
-                <div id="city-day-forecast">
-                    <h2 id="city-name"></h2>
-                    <img id="icon"></img> 
-                    <div id="weather-info"></div>
-                    <div id="Temp"></div>
-                    <div id="Humidity"></div>
-                    <div id="Wind-speed"></div>
                 </div>
+            </section>
+
+            <section>
+                <div id="main-content">
+                    <div id="city-day-forecast">
+                        <h2 id="city-name"></h2>
+                        <img id="icon"></img> 
+                        <div id="weather-info"></div>
+                        <div id="Temp"></div>
+                        <div id="Humidity"></div>
+                        <div id="Wind-speed"></div>
+                    </div>
+                </div>   
+            
                 <div id="five-day-forecast">
-                    <div id="day1">one</div>
+                    <div class="date1">one
                         <img id="icon1"></img> 
                         <div id="weather-info1"></div>
                         <div id="Temp1"></div>
                         <div id="Humidity1"></div>
-                            <div id="Wind-speed1"></div>
-
-                    <div id="day2">two</div>
+                        <div id="Wind-speed1"></div>
+                    </div>
+            
+                    <div class="date2">two
                         <img id="icon2"></img> 
                         <div id="weather-info2"></div>
                         <div id="Temp2"></div>
                         <div id="Humidity2"></div>
                         <div id="Wind-speed2"></div>
+                    </div>
 
-                    <div id="day3">three<div>        
+                    <div class="date3">three       
                         <img id="icon3"></img> 
                         <div id="weather-info3"></div>
                         <div id="Temp3"></div>
                         <div id="Humidity3"></div>
                         <div id="Wind-speed3"></div>
+                    </div>
 
-                    <div id="day4">four</div>
+                    <div class="date4">four
                         <img id="icon4"></img> 
                         <div id="weather-info4"></div>
                         <div id="Temp4"></div>
                         <div id="Humidity4"></div>
                         <div id="Wind-speed4"></div>
-
-                    <div id="day5">five</div>
+                    </div>
+                    <div class="date5">five
                         <img id="icon5"></img> 
                         <div id="weather-info5"></div>
                         <div id="Temp5"></div>
                         <div id="Humidity5"></div>
                         <div id="Wind-speed5"></div>
+                    </div>
+                    
+                </div>
+            </section>       
         </div>
-    </div>
     </main> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./script.js"></script>

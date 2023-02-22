@@ -19,6 +19,16 @@ var windSpeedEl = $("#Wind-speed");
 var searchHistory = [];
 var savedInputEl = $("#saved-input");
 
+
+var iconURL = ICON_QUERY_URL + iconId + ".png";
+icon.attr('src', iconURL);
+
+// missing date 
+$('#icon'+i).html("<img src="+iconURL+">");
+$('#Temp'+i).html(temp);
+$('#Wind'+i).html(windSpeed);
+$('#Humidity'+i).html(humidity);
+
 $(document).ready(function () {
 
 });
@@ -40,8 +50,6 @@ async function search(event) {
     cityName.text(city);
     
     var iconId = cityWeatherData.list[0].weather[0].icon
-    var url = ICON_QUERY_URL + iconId + ".png";
-    icon.attr('src', url);
 
     var date = cityWeatherData.list[0].dt_txt.split(" ")[0];
     cityName.append(`  ( ${date} )`);
@@ -54,10 +62,8 @@ async function search(event) {
    humidityEl.text(humidityText);
    windSpeedEl.text(windSpeedText);
    addToHistory(city); 
-
-//    userInput.reset();
-
 }
+
 function addToHistory(city) {
 if(searchHistory.indexOf(city)!== -1){
     return;
@@ -81,21 +87,30 @@ for(var i = searchHistory.length-1; i >= 0; i --) {
 async function getCityInfo(city) {
     // This functions consumes this API https://openweathermap.org/api/geocoding-api
     // This function returns a Json with all the city information
-    var url = CITY_QUERY_URL + "?q=" + city + "&appid=" + API_KEY;
+    var cityURL = CITY_QUERY_URL + "?q=" + city + "&appid=" + API_KEY;
 
-    var response = await fetch(url, {method:"GET"});
+    var response = await fetch(cityURL, {method:"GET"});
     var data = await response.json();
     return data;
 }
 
 async function getCityWeatherInfo(lat, lon) {
-    var url = WEATHER_QUERY_URL + "?lat=" + lat + "&lon=" + lon +  "&units=imperial" + "&appid=" + API_KEY; 
+    var weatherURL = WEATHER_QUERY_URL + "?lat=" + lat + "&lon=" + lon +  "&units=imperial" + "&appid=" + API_KEY; 
 
-    var response = await fetch(url, {method:"GET"});
+    var response = await fetch(weatherURL, {method:"GET"});
     var data = await response.json();
     console.log("data = ", data);
     return data;
 }
+
+// 5-Day-Forecast
+
+date
+icon
+tempEl
+windSpeedEl
+humidityEl
+
 
     // for(var i = cityWeatherInfo.length; i >= 6; i++);
     // return (city, icon, tempText, humidityText, windText,)

@@ -19,41 +19,27 @@ var windSpeedEl = $("#Wind-speed");
 var searchHistory = [];
 var savedInputEl = $("#saved-input");
 
-
-var iconURL = ICON_QUERY_URL + iconId + ".png";
-icon.attr('src', iconURL);
-
-// missing date 
-$('#icon'+i).html("<img src="+iconURL+">");
-$('#Temp'+i).html(temp);
-$('#Wind'+i).html(windSpeed);
-$('#Humidity'+i).html(humidity);
-
 $(document).ready(function () {
-
 });
 
 async function search(event) {
     event.preventDefault();
     var city = userInput.val();
-
     var cityData = await getCityInfo(city);
     var cityLat = cityData[0].lat;
     var cityLon = cityData[0].lon;
-
     var cityWeatherData = await getCityWeatherInfo(cityLat, cityLon);
-
     var temp = cityWeatherData.list[0].main.temp
     var humidity = cityWeatherData.list[0].main.humidity
     var windSpeed = cityWeatherData.list[0].wind.speed
 
     cityName.text(city);
     
-    var iconId = cityWeatherData.list[0].weather[0].icon
-
+    var iconID = cityWeatherData.list[0].weather[0].icon
+    var iconURL = ICON_QUERY_URL + iconID + ".png";
+    icon.attr('src', iconURL);
     var date = cityWeatherData.list[0].dt_txt.split(" ")[0];
     cityName.append(`  ( ${date} )`);
-
     var tempText = "Temp: " + temp + " deg F ";
     var humidityText = "Humidity: " + humidity + " % "; 
     var windSpeedText = "Wind speed: " + windSpeed + " mph "; 
@@ -99,25 +85,23 @@ async function getCityWeatherInfo(lat, lon) {
 
     var response = await fetch(weatherURL, {method:"GET"});
     var data = await response.json();
+
     console.log("data = ", data);
     return data;
 }
 
-// 5-Day-Forecast
+for(var i = 1; i>6; i++) {
+    var dateI = cityWeatherData.list[i].dt
+    var tempI = cityWeatherData.list[i].main.temp
+    var humidityI = cityWeatherData.list[i].main.humidity
+    var windSpeedI = cityWeatherData.list[i].wind.speed
 
-date
-icon
-tempEl
-windSpeedEl
-humidityEl
+$('#date'+i).html(dateI);
+$('#icon'+i).html("<img src="+iconURL+">");
+$('#Temp'+i).html(tempI);
+$('#Wind'+i).html(windSpeedI);
+$('#Humidity'+i).html(humidityI);
 
+}
 
-    // for(var i = cityWeatherInfo.length; i >= 6; i++);
-    // return (city, icon, tempText, humidityText, windText,)
-
-//  var response = await fetch(url, {method:"GET"});
-//     var icon = await response.json();
-//     console.log("icon = ", icon);
-//     return icon; 
-// }
 

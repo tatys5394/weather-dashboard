@@ -61,27 +61,28 @@ body {
 }
 
 #five-day-forecast {
-    background-color: goldenrod;
+    background-color: rgb(15, 163, 171);
     display: flex;
     flex-direction: row;
     flex-grow: 1;
+ 
 
 }.date1 {
-    background-color: brown;
+    background-color: rgb(15, 163, 171);
 }
 
 .date2 {
-    background-color: fuchsia;
+    background-color: rgb(15, 163, 171);
 }
 
 .date3 {
-    background-color: rgb(27, 170, 202);
+    background-color: rgb(15, 163, 171);
 }
 
 .date4 {
-    background-color: rgb(155, 113, 15);
+    background-color: rgb(15, 163, 171);
 }
 
 .date5 {
-    background-color: rgb(185, 19, 8);
+    background-color: rgb(15, 163, 171);
 }

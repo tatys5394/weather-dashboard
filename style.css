@@ -56,12 +56,12 @@ body {
 }
 
 #city-day-forecast {
-    /* background-color: red; */
+    
     flex-grow: 1;
 }
 
 #five-day-forecast {
-    background-color: rgb(15, 163, 171);
+   
     display: flex;
     flex-direction: row;
     flex-grow: 1;

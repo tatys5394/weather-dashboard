@@ -1,13 +1,15 @@
-const API_KEY = "104a3cf9c97eb36dae06eabd5aa7ae2d";
-const CITY_QUERY_URL = "https://api.openweathermap.org/geo/1.0/direct";
-const WEATHER_QUERY_URL = "https://api.openweathermap.org/data/2.5/forecast";
-const ICON_QUERY_URL = "https://openweathermap.org/img/w/";
 
 // create user input box for cities
 // create an array of cities? or how do we get coordinates
 // create localstorage to store user input. Specify state and country variables in your API call, as multiple countries or states might have cities with the same name. For the purposes of this guide, you can use the city variable that you just created.
 
 // Map elements section
+
+$(document).ready(function () {});
+const API_KEY = "104a3cf9c97eb36dae06eabd5aa7ae2d";
+const CITY_QUERY_URL = "https://api.openweathermap.org/geo/1.0/direct";
+const WEATHER_QUERY_URL = "https://api.openweathermap.org/data/2.5/forecast";
+const ICON_QUERY_URL = "https://openweathermap.org/img/w/";
 var searchButton = $("#search-button");
 searchButton.on("click", search);
 var cityName = $("#city-name");
@@ -16,12 +18,10 @@ var icon = $("#icon");
 var tempEl = $("#Temp");
 var humidityEl = $("#Humidity");
 var windSpeedEl = $("#Wind-speed");
-var searchHistory = [];
+let searchHistory = JSON.parse(localStorage.getItem("search-history")) || [];
 var savedInputEl = $("#saved-input");
 var currentDate = dayjs().format("MM,DD,YYYY");
-
-$(document).ready(function () {});
-console.log(currentDate);
+// console.log(currentDate);
 
 async function search(event) {
   event.preventDefault();
@@ -50,17 +50,42 @@ async function search(event) {
   tempEl.text(tempText);
   humidityEl.text(humidityText);
   windSpeedEl.text(windSpeedText);
-  addToHistory(city);
+  addToHistory(city, tempText, humidityText, windSpeedText, date, iconURL);
   displayForecast(cityWeatherData);
 }
 
-function addToHistory(city) {
+function addToHistory(city, tempText, humidityText, windSpeedText, date, iconURL) {
   if (searchHistory.indexOf(city) !== -1) {
     return;
   }
-  searchHistory.push(city);
+  let weatherObj = {
+    city: "",
+    date: "",
+    temp:"",
+    humidity:"",
+    windSpeed:"",
+    iconURL:""
+  }
+  weatherObj.city =city;
+  weatherObj.date = date;
+  weatherObj.temp = tempText;
+  weatherObj.humidity = humidityText;
+  weatherObj.windSpeed = windSpeedText;
+  weatherObj.iconURL = iconURL;
+  searchHistory.push(weatherObj);
   localStorage.setItem("search-history", JSON.stringify(searchHistory));
   displayHistory();
+}
+
+function loadCityFromHistory() {
+  var city = "London";
+  var index = searchHistory.indexOf(city);
+  for (var i = searchHistory.length - 1; i >= 0; i--) {
+   console.log(searchHistory[i].city);
+   if(searchHistory[i].city === city) {
+    
+   }
+  }
 }
 
 function displayHistory() {
@@ -70,9 +95,11 @@ function displayHistory() {
     btn.setAttribute("type", "button");
     btn.classList.add("history-btn", "btn-history");
     btn.setAttribute("data-search", searchHistory[i]);
-    btn.textContent = searchHistory[i];
+    btn.textContent = searchHistory[i].city;
+    btn.addEventListener("click",loadCityFromHistory);
     savedInputEl.append(btn);
   }
+
 }
 
 async function getCityInfo(city) {
@@ -99,17 +126,17 @@ async function getCityWeatherInfo(lat, lon) {
   var response = await fetch(weatherURL, { method: "GET" });
   var data = await response.json();
 
-  console.log("data = ", data);
+  // console.log("data = ", data);
   return data;
 }
 
 function displayForecast(cityWeatherData) {
-  console.log(cityWeatherData.list);
+  // console.log(cityWeatherData.list);
   for (let i = 0; i < 5; i++) {
     var iconID = cityWeatherData.list[i * 8].weather[0].icon;
     var iconURL = ICON_QUERY_URL + iconID + ".png";
     // icon.attr("src", iconURL);
-    console.log(iconURL);
+    // console.log(iconURL);
     var dateI = cityWeatherData.list[i * 8].dt_txt.split(" ")[0];
     var tempI = cityWeatherData.list[i * 8].main.temp;
     var humidityI = cityWeatherData.list[i * 8].main.humidity;

@@ -24,12 +24,10 @@ body {
 #sidebar {
     display: flex;
     flex-direction: column;
-    /* background-color: yellowgreen; */
     flex-grow: 1;
 }
 
 #sidebar-title {
-    /* background-color: blue; */
     flex-grow: 1;
 }
 
@@ -42,7 +40,6 @@ body {
 }
 
 #saved-input {
-    /* background-color: green; */
     display: flex;
     flex-direction:column;
     flex-grow: 8;
@@ -52,37 +49,24 @@ body {
     display: flex;
     flex-direction: column;
     flex-grow: 3;
-    height: 100%;
 }
 
 #city-day-forecast {
-    
+    margin-left: 10%;
+    flex-grow: 1;
+}
+
+#city-day-forecast-title {
     flex-grow: 1;
 }
 
 #five-day-forecast {
-   
     display: flex;
     flex-direction: row;
     flex-grow: 1;
- 
 
-}.date1 {
-    background-color: rgb(15, 163, 171);
 }
 
-.date2 {
-    background-color: rgb(15, 163, 171);
-}
-
-.date3 {
-    background-color: rgb(15, 163, 171);
-}
-
-.date4 {
-    background-color: rgb(15, 163, 171);
-}
-
-.date5 {
+.date0, .date1, .date2, .date3, .date4, .date5 {
     background-color: rgb(15, 163, 171);
 }

@@ -77,13 +77,17 @@ function addToHistory(city, tempText, humidityText, windSpeedText, date, iconURL
   displayHistory();
 }
 
-function loadCityFromHistory() {
-  var city = "London";
-  var index = searchHistory.indexOf(city);
-  for (var i = searchHistory.length - 1; i >= 0; i--) {
-   console.log(searchHistory[i].city);
+function loadCityFromHistory(clickedButton) {
+  var city = clickedButton.srcElement.textContent;
+  for (var i = 0; i < searchHistory.length; i++) {
    if(searchHistory[i].city === city) {
-    
+    console.log(searchHistory[i]);
+    cityName.text(city);
+    tempEl.text(searchHistory[i].temp);
+    humidityEl.text(searchHistory[i].humidity);
+    windSpeedEl.text(searchHistory[i].windSpeed);
+    icon.attr("src", searchHistory[i].iconURL);
+    return;
    }
   }
 }
